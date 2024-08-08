@@ -60,7 +60,7 @@ pnpm install
 pnpm dev
 ```
 
-Your app template should now be running on [localhost:3000](http://localhost:3000/).
+Your app template should now be running on [47.94.59.230:3000](http://47.94.59.230:3000/).
 
 ## Authors
 

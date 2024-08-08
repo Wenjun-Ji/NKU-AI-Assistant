@@ -139,7 +139,7 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
     const uiStream = createStreamableUI();
     specialcontent = "文件已发送";
     // 发送文件到后端
-    const response = await fetch('http://localhost:8000/file_analyze', {
+    const response = await fetch('http://47.94.59.230:8000/file_analyze', {
       method: 'POST',
       body: file,  // 这里的 file 是之前创建的 FormData 对象
     });
@@ -186,7 +186,7 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
     specialcontent = "文件已发送";
     try {
       // 发送文件到后端
-      const response = await fetch('http://localhost:8000/translate', {
+      const response = await fetch('http://47.94.59.230:8000/translate', {
         method: 'POST',
         body: file,  // 这里的 file 是之前创建的 FormData 对象
       });
@@ -305,7 +305,7 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
     // 发送文件到后端
     (async () => {
       try {
-        const response = await fetch('http://localhost:8000/nk_news_get', {
+        const response = await fetch('http://47.94.59.230:8000/nk_news_get', {
           method: 'POST',
           headers: {
             'accept': 'application/json',
@@ -411,7 +411,7 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
     // 发送文件到后端
     (async () => {
       try {
-        const response = await fetch('http://localhost:8000/videoinfo_analyze', {
+        const response = await fetch('http://47.94.59.230:8000/videoinfo_analyze', {
           method: 'POST',
           headers: {
             'accept': 'application/json',
@@ -473,7 +473,7 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
     // 发送文件到后端
     (async () => {
       try {
-        const response = await fetch('http://localhost:8000/webscrap_analyze', {
+        const response = await fetch('http://47.94.59.230:8000/webscrap_analyze', {
           method: 'POST',
           headers: {
             'accept': 'application/json',
@@ -565,10 +565,10 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
     }
   }
   else if (selectedValue === "MetaAgent") {
-    chat_url = "chat_graph";
-    requestData = {
-      input: content
-    };
+    chat_url = "chat_stream";
+    // requestData = {
+    //   input: content
+    // };
   } else if (selectedValue === "NeoGraph") {
     chat_url = "chat_GraphRAG";
   }
@@ -578,7 +578,7 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
   (async () => {
     try {
       // 调用流式 API
-      const URL = "http://localhost:8000/" + chat_url
+      const URL = "http://47.94.59.230:8000/" + chat_url
 
       const response = await fetch(URL, {
         method: 'POST',
