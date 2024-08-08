@@ -294,7 +294,7 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
       display: messageStream.value,
     };
   }
-  else if (content.startsWith('请你提供最新')) {
+  else if ((content.includes('提供') || content.includes('显示')) && (content.includes('最新') || content.includes('最近'))) {
     const spinnerStream = createStreamableUI(<SpinnerMessage />);
     const messageStream = createStreamableUI(null);
     const textStream = createStreamableValue('');
@@ -564,12 +564,12 @@ async function submitUserMessage(content: string, selectedValue: string, file?: 
       }
     }
   }
-  else if (selectedValue === "multi-Agent RAG") {
+  else if (selectedValue === "MetaAgent") {
     chat_url = "chat_graph";
     requestData = {
       input: content
     };
-  }else if ( selectedValue === "GraphRAG") {
+  } else if (selectedValue === "NeoGraph") {
     chat_url = "chat_GraphRAG";
   }
 
@@ -743,4 +743,3 @@ export const getUIStateFromAIState = (aiState: Chat) => {
         ) : null
     }))
 }
-

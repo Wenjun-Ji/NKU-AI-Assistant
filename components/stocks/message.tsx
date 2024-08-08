@@ -9,10 +9,11 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import { StreamableValue, useStreamableValue } from 'ai/rsc'
 import { useStreamableText } from '@/lib/hooks/use-streamable-text'
+import { ChatMessageActions } from '@/components/chat-message-actions'
 
 // Different types of message bubbles.
 
-export function UserMessage({ children }: { children: React.ReactNode }) {
+export function UserMessage({ children }: { children: string }) {
   // 检查 children 是否以 "请显示" 开头，并提取文件名
   const isDisplayFile = typeof children === 'string' && children.startsWith('发送了文件');
   const fileName = isDisplayFile ? children.replace('发送了文件', '').trim() : '';
@@ -25,6 +26,7 @@ export function UserMessage({ children }: { children: React.ReactNode }) {
       <div className="ml-4 flex-1 space-y-2 overflow-hidden pl-2">
         {children}
         {isDisplayFile && <Iconfile fileName={fileName} />}
+        <ChatMessageActions message={children} />
       </div>
     </div>
   );
@@ -93,6 +95,7 @@ export function BotMessage({
         >
           {markdownContent}
         </MemoizedReactMarkdown>
+        <ChatMessageActions message={text} />
       </div>
     </div>
   )
